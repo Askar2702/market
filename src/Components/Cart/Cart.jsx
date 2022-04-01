@@ -22,19 +22,19 @@ const Cart = ({ cart }) => {
   }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
   return (
-    <div className="cart">
-      <div className="cart__items">
+    <div className="d-flex ">
+      <div className="w-75">
         {cart.map((item) => (
           <Item key={item.id} item={item} />
         ))}
       </div>
-      <div className="cart__summary">
-        <h4 className="summary__title">Cart Summary</h4>
-        <div className="summary__price">
+      <div className="bg-warning h-100 p-5 mt-3 rounded-3">
+        <h4 className="h1">Cart Summary</h4>
+        <div className="h3">
           <span>TOTAL: ({totalItems} items)</span>
           <span>$ {totalPrice}</span>
         </div>
-        <button className="summary__checkoutBtn">Proceed To Checkout</button>
+        <button className="btn btn-primary">Proceed To Checkout</button>
       </div>
     </div>
   );

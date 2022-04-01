@@ -5,20 +5,16 @@ import { addToCart } from "../../Redux/Shop/action";
 
 const ShowItem = ({ current, addToCart }) => {
   return (
-    <div className="singleItem">
-      <img
-        className="singleItem__image"
-        src={current.image}
-        alt={current.title}
-      />
-      <div className="singleItem__details">
-        <p className="details__title">{current.title}</p>
-        <p className="details__description">{current.description}</p>
-        <p className="details__price"> ${current.price}</p>
+    <div className="d-flex w-100 text-secondary my-5">
+      <img className="w-50 ml-2" src={current.image} alt={current.title} />
+      <div className="singleItem__details w-50 m-3 text-center">
+        <p className="h1">{current.title}</p>
+        <p className="h4">{current.description}</p>
+        <p className="h2"> ${current.price}</p>
 
         <button
           onClick={() => addToCart(current.id)}
-          className="details__addBtn"
+          className="btn btn-primary"
         >
           Add To Cart
         </button>

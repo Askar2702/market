@@ -1,93 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+import { connect } from "react-redux";
+
+const Navbar = ({ cart }) => {
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    let count = 0;
+    cart.forEach((item) => {
+      count += item.qty;
+    });
+
+    setCartCount(count);
+  }, [cart, cartCount]);
+
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Link
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-              >
-                Disabled
-              </a>
-            </li>
-          </ul>
-        </div>
-        <form class="d-flex">
-          <input
-            class="form-control me-2 mx-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-primary" type="submit">
-            Search
-          </button>
-        </form>
+    <nav className="bg-dark d-flex justify-content-between">
+      <div className="m-2">
+        <Link to="/" className="text-decoration-none">
+          <h2 className="navbar__logo text-white">Market</h2>
+        </Link>
+      </div>
+      <div className="bg-light rounded-pill m-2">
+        <Link to="/cart" className="text-decoration-none">
+          <div className="d-flex justify-content-center">
+            <div className="w-25 h-25 mx-3">
+              <img
+                className="cart__image img-fluid"
+                src="https://cdn-icons-png.flaticon.com/128/3144/3144456.png"
+                alt="shopping cart"
+              />
+            </div>
+            <div className="w-25 h-25">
+              <h2 className="text-dark">{cartCount}</h2>
+            </div>
+          </div>
+        </Link>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.shop.cart,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

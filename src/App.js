@@ -4,17 +4,18 @@ import Cart from "./Components/Cart/Cart";
 import Home from "./Components/Home/Home";
 import ShowItem from "./Components/ShowItem/ShowItem"
 import { connect } from "react-redux";
+import Navbar from "./Components/Navbar/Navbar";
 function App({ current }) {
   return (
-    <div className="App bg-primary">
-
+    <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart />} />
         {!current ? (
           <Route path="/" element={<Home />} />
         ) : (
-          <Route exact path="/Showitem/:id" element={<ShowItem />} />
+          <Route exact path="/product/:id" element={<ShowItem />} />
         )}
       </Routes>
     </div>
