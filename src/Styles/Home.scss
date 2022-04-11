@@ -1,0 +1,18 @@
+@import "./Media.scss";
+
+.Home {
+  .container {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 237, 79);
+    width: 100%;
+    display: grid;
+
+    @include breakpoint(xs) {
+      grid-template-columns: 1fr;
+    }
+    @include breakpoint(lg) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

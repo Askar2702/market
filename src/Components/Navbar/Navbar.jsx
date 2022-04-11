@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
+import "../../Styles/Navbar.css";
+
 const Navbar = ({ cart }) => {
   const [cartCount, setCartCount] = useState(0);
 
@@ -16,25 +18,17 @@ const Navbar = ({ cart }) => {
   }, [cart, cartCount]);
 
   return (
-    <nav className="bg-dark d-flex justify-content-between">
-      <div className="m-2">
-        <Link to="/" className="text-decoration-none">
-          <h2 className="navbar__logo text-white">Market</h2>
+    <nav className="Navbar">
+      <div className="logo">
+        <Link to="/" className="link">
+          <h1 className="text">Market</h1>
         </Link>
       </div>
-      <div className="bg-light rounded-pill m-2">
-        <Link to="/cart" className="text-decoration-none">
-          <div className="d-flex justify-content-center">
-            <div className="w-25 h-25 mx-3">
-              <img
-                className="cart__image img-fluid"
-                src="https://cdn-icons-png.flaticon.com/128/3144/3144456.png"
-                alt="shopping cart"
-              />
-            </div>
-            <div className="w-25 h-25">
-              <h2 className="text-dark">{cartCount}</h2>
-            </div>
+      <div className="cart ">
+        <Link to="/cart" className="link">
+          <div className="cartBlock">
+            <div className="imgBlock "></div>
+            <div className="cartCount">{cartCount}</div>
           </div>
         </Link>
       </div>

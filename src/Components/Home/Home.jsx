@@ -4,11 +4,12 @@ import Navbar from "../Navbar/Navbar";
 import { connect } from "react-redux";
 
 import Product from "./Product/product";
+import "../../Styles/Home.css";
 
 const Home = ({ item }) => {
   return (
-    <div className="bg-light">
-      <div className="container-fluid row">
+    <div className="Home">
+      <div className="container">
         {item.map((product) => (
           <Product key={product.id} product={product} />
         ))}

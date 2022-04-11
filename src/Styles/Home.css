@@ -1,0 +1,2 @@
+.Home .container{margin:0;padding:0;background-color:#ffed4f;width:100%;display:grid}@media (min-width: 320px){.Home .container{grid-template-columns:1fr}}@media (min-width: 992px){.Home .container{grid-template-columns:1fr 1fr 1fr}}
+/*# sourceMappingURL=Home.css.map */
